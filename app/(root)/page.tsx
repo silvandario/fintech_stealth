@@ -1,5 +1,5 @@
 import HeaderBox from '@/components/HeaderBox'
-import RightSidebar from '@/components/RIghtSidebar'
+import RightSidebar from '@/components/RightSidebar'
 
 import { TotalBalanceBox } from '@/components/TotalBalanceBox';
 
@@ -20,6 +20,7 @@ const Home = () => {
                 totalBanks = {1}
                 totalCurrentBalance = {43234.90}
                 />
+            
             </header>
             RECENT TRANSACTIONS
         </div>
