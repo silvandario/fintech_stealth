@@ -10,19 +10,25 @@ import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import {
   Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import CustomInput from './CustomInput';
 import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
-import CustomInput from './CustomInput';
 import PlaidLink from './PlaidLink';
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  
 
   const formSchema = authFormSchema(type);
 
@@ -31,8 +37,7 @@ const AuthForm = ({ type }: { type: string }) => {
       resolver: zodResolver(formSchema),
       defaultValues: {
         email: "",
-        password: '',
-        ssn: '1234',
+        password: ''
       },
     })
    
@@ -85,9 +90,9 @@ const AuthForm = ({ type }: { type: string }) => {
               src="/icons/logo.svg"
               width={34}
               height={34}
-              alt="Lumi logo"
+              alt="Horizon logo"
             />
-            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Lumi</h1>
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">Horizon</h1>
           </Link>
 
           <div className="flex flex-col gap-1 md:gap-3">
@@ -109,9 +114,7 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
       {user ? (
         <div className="flex flex-col gap-4">
-          {/*
           <PlaidLink user={user} variant="primary" />
-          */}
         </div>
       ): (
         <>
