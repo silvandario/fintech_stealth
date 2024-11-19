@@ -1,10 +1,11 @@
-import Link from 'next/link'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Link from 'next/link';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-import { BankTabItem } from './BankTabItem'
-import BankInfo from './BankInfo'
-import TransactionsTable from './TransactionsTable'
-import { Pagination } from './Pagination'
+import { BankTabItem } from './BankTabItem';
+import BankInfo from './BankInfo';
+import TransactionsTable from './TransactionsTable';
+import { Pagination } from './Pagination';
+import ChatInterface from './ChatInterface';
 
 const RecentTransactions = ({
   accounts,
@@ -19,8 +20,9 @@ const RecentTransactions = ({
   const indexOfFirstTransaction = indexOfLastTransaction - rowsPerPage;
 
   const currentTransactions = transactions.slice(
-    indexOfFirstTransaction, indexOfLastTransaction
-  )
+    indexOfFirstTransaction,
+    indexOfLastTransaction
+  );
 
   return (
     <section className="recent-transactions">
@@ -35,7 +37,7 @@ const RecentTransactions = ({
       </header>
 
       <Tabs defaultValue={appwriteItemId} className="w-full">
-      <TabsList className="recent-transactions-tablist">
+        <TabsList className="recent-transactions-tablist">
           {accounts.map((account: Account) => (
             <TabsTrigger key={account.id} value={account.appwriteItemId}>
               <BankTabItem
@@ -61,17 +63,19 @@ const RecentTransactions = ({
 
             <TransactionsTable transactions={currentTransactions} />
             
-
             {totalPages > 1 && (
               <div className="my-4 w-full">
                 <Pagination totalPages={totalPages} page={page} />
               </div>
             )}
+
+            {/* Add ChatInterface Here */}
+            <ChatInterface transactions={transactions} />
           </TabsContent>
         ))}
       </Tabs>
     </section>
-  )
-}
+  );
+};
 
-export default RecentTransactions
+export default RecentTransactions;
