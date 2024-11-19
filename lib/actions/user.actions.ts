@@ -43,7 +43,7 @@ export const signIn = async ({ email, password }: signInProps) => {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
-      secure: true,
+      secure: false, //true
     });
 
     const user = await getUserInfo({ userId: session.userId }) 
@@ -102,8 +102,9 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
-      secure: true,
+      secure: false, //true
     });
+    console.log("Cookie set: ", cookies().get("appwrite-session"));
 
     return parseStringify(newUser);
   } catch (error) {
