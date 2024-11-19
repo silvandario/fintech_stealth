@@ -3,11 +3,11 @@ import React from 'react'
 
 const SignIn = () => {
   return (
-    <div>
-      <section className='flex-center size-full max-sm:px-6'>
+    <div className="flex w-full flex-col items-center justify-center min-h-screen sm:min-h-0">
+      
         <AuthForm type="sign-in" />
 
-      </section>
+
 
     </div>
   )

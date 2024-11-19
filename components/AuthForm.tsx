@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
 import CustomInput from './CustomInput';
 import PlaidLink from './PlaidLink';
+import DateOfBirthInput from './DateofBirtInput';
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const AuthForm = ({ type }: { type: string }) => {
       defaultValues: {
         email: "",
         password: '',
-        ssn: '1234',
+
       },
     })
    
@@ -130,7 +131,11 @@ const AuthForm = ({ type }: { type: string }) => {
                     <CustomInput control={form.control} name='postalCode' label="Postal Code" placeholder='Example: 11101' />
                   </div>
                   <div className="flex gap-4">
+
+                    <DateOfBirthInput control={form.control} name='dateOfBirth' label="Date of Birth" placeholder='YYYY-MM-DD' />
+                     {/* 
                     <CustomInput control={form.control} name='dateOfBirth' label="Date of Birth" placeholder='YYYY-MM-DD' />
+                    */}
                     <CustomInput control={form.control} name='ssn' label="SSN" placeholder='Example: 1234' />
                   </div>
                 </>

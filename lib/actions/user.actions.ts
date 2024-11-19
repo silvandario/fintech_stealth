@@ -10,7 +10,6 @@ import { plaidClient } from '@/lib/plaid';
 import { revalidatePath } from "next/cache";
 import { addFundingSource, createDwollaCustomer } from "./dwolla.actions";
 
-
 const {
   APPWRITE_DATABASE_ID: DATABASE_ID,
   APPWRITE_USER_COLLECTION_ID: USER_COLLECTION_ID,
@@ -37,6 +36,8 @@ export const signIn = async ({ email, password }: signInProps) => {
   try {
     const { account } = await createAdminClient();
     const session = await account.createEmailPasswordSession(email, password);
+    console.log("Session created:", session);
+
 
     cookies().set("appwrite-session", session.secret, {
       path: "/",
@@ -61,6 +62,8 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
   try {
     const { account, database } = await createAdminClient();
 
+    const state = "NY";
+
     newUserAccount = await account.create(
       ID.unique(), 
       email, 
@@ -72,6 +75,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
 
     const dwollaCustomerUrl = await createDwollaCustomer({
       ...userData,
+      state,
       type: 'personal'
     })
 
@@ -85,6 +89,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
       ID.unique(),
       {
         ...userData,
+        state,
         userId: newUserAccount.$id,
         dwollaCustomerId,
         dwollaCustomerUrl
