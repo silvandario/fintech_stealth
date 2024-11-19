@@ -33,6 +33,11 @@ const AuthForm = ({ type }: { type: string }) => {
       defaultValues: {
         email: "",
         password: '',
+        ssn:"1234",
+        state: "NY",
+        postalCode: "11101",
+        city: "St. Gallen",
+
 
       },
     })

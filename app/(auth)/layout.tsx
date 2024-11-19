@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export default function RootLayout({
       <div className="auth-asset">
         <div>
           <Image 
-            src="/icons/auth-image.svg"
+            src="/icons/joe.svg"
             alt="Auth image"
             width={500}
             height={500}
