@@ -35,6 +35,8 @@ const RecentTransactions = ({
           View all
         </Link>
       </header>
+      {/* Add ChatInterface Here */}
+      <ChatInterface transactions={transactions} />
 
       <Tabs defaultValue={appwriteItemId} className="w-full">
         <TabsList className="recent-transactions-tablist">
@@ -69,8 +71,7 @@ const RecentTransactions = ({
               </div>
             )}
 
-            {/* Add ChatInterface Here */}
-            <ChatInterface transactions={transactions} />
+            
           </TabsContent>
         ))}
       </Tabs>

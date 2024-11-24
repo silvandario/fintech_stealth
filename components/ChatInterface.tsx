@@ -17,7 +17,7 @@ const ChatInterface = ({ transactions }: { transactions: any[] }) => {
 
     const responseMessage = {
       sender: "ai",
-      message: "Thinking...",
+      message: "Let me cook...",
     };
     setMessages((prev) => [...prev, responseMessage]);
 
@@ -30,6 +30,12 @@ const ChatInterface = ({ transactions }: { transactions: any[] }) => {
     );
 
     setUserInput("");
+  };
+
+  const handleKeyDown = (e:any) => {
+    if (e.key === 'Enter') {
+      handleSend();
+    }
   };
 
   return (
@@ -46,6 +52,7 @@ const ChatInterface = ({ transactions }: { transactions: any[] }) => {
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Ask a question..."
         />
         <button onClick={handleSend}>Send</button>

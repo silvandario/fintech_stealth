@@ -96,10 +96,37 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        ripple: {
+          "0%, 100%": {
+            transform: "translate(-50%, -50%) scale(1)",
+          },
+          "50%": {
+            transform: "translate(-50%, -50%) scale(0.9)",
+          },
+        },
+		      grid: {
+			      "0%": { transform: "translateY(-50%)" },
+			      "100%": { transform: "translateY(0)" },
+			},
+      fadeIn: {
+        '0%': { opacity: '0', transform: 'translateY(10px)' },
+        '100%': { opacity: '1', transform: 'translateY(0)' },
       },
+      slideInAndShrink: {
+        '0%': { transform: 'translateX(-100%) scale(2)', opacity: '0' },
+        '50%': { opacity: '1' },
+        '100%': { transform: 'translateX(0) scale(1)', opacity: '1' },
+      },
+		  },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+		    grid: "grid 15s linear infinite",
+        fadeIn: 'fadeIn 0.6s ease-out forwards',
+        slideInAndShrink: 'slideInAndShrink 1s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+
+
       },
     },
   },

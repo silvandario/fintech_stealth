@@ -23,6 +23,15 @@ const MobileNav = ({ user }: MobileNavProps) => {
   return (
     <section className="w-fulll max-w-[264px]">
       <Sheet>
+      <SheetHeader>
+              <SheetTitle>
+                
+              </SheetTitle>
+            
+            <SheetDescription>
+              {/* Beschreibung oder zusätzliche Inhalte */}
+            </SheetDescription>
+          </SheetHeader>
         <SheetTrigger>
           <Image
             src="/icons/hamburger.svg"
@@ -32,6 +41,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
             className="cursor-pointer"
           />
         </SheetTrigger>
+
         <SheetContent side="left" className="border-none bg-white">
           <Link href="/" className="cursor-pointer flex items-center gap-1 px-4">
             <Image 
@@ -70,7 +80,6 @@ const MobileNav = ({ user }: MobileNavProps) => {
                 )
               })}
 
-              USER
               </nav>
             </SheetClose>
 

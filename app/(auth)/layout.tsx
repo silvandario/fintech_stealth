@@ -1,3 +1,5 @@
+import Hero from "@/components/Hero";
+import ValueProposition from "@/components/ValueProposition";
 import Image from "next/image";
 
 export default function AuthLayout({
@@ -6,7 +8,14 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex min-h-screen w-full justify-between font-inter">
+    <>
+    <div className="flex min-h-screen w-full justify-between font-inter">
+      <Hero />
+    </div>
+    
+
+
+    <main className="flex min-h-screen w-full justify-between font-inter" id="child">
       {children}
       <div className="auth-asset">
         <div>
@@ -20,5 +29,14 @@ export default function AuthLayout({
         </div>
       </div>
     </main>
+    
+     { /* 
+     <div className="flex min-h-screen w-full justify-between font-inter">
+     <ValueProposition /> 
+     </div>
+     */}
+     
+    
+    </>
   );
 }
