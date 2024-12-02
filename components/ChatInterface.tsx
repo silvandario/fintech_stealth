@@ -1,6 +1,6 @@
 "use client"
-import { askQuestion } from "@/app/api/chat";
 import { useState } from "react";
+import { askQuestion } from "@/lib/utils";
 
 
 const ChatInterface = ({ transactions }: { transactions: any[] }) => {
