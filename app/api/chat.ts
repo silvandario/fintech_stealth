@@ -1,7 +1,41 @@
+//chat.ts
 "use server";
 
 import { NextRequest, NextResponse } from "next/server";
-import openai, { askQuestion } from "@/lib/utils"
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
+});
+
+export const askQuestion = async (query: string, transactions: any[]) => {
+  const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
+    {
+      role: "system",
+      content: "You are a financial assistant that helps analyze user transactions.",
+    },
+    {
+      role: "user",
+      content: `Here are my recent transactions: ${JSON.stringify(
+        transactions
+      )}. ${query}`,
+    },
+  ];
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages,
+      temperature: 0.7,
+    });
+
+    return response.choices[0]?.message?.content || "No response";
+  } catch (error: any) {
+    console.error("Error with OpenAI API:", error.response?.data || error.message);
+    throw new Error("Error processing the request with OpenAI.");
+  }
+};
 
 
 
@@ -28,6 +62,3 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export const config = {
-  runtime: "edge",
-};

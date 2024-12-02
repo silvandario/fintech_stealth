@@ -1,3 +1,4 @@
+//utils.ts
 /* eslint-disable no-prototype-builtins */
 import { OpenAI } from "openai";
 import { type ClassValue, clsx } from "clsx";
@@ -211,38 +212,6 @@ export const authFormSchema = (type: string) => z.object({
   password: z.string().min(8),
 })
 
-
-export const askQuestion = async (query: string, transactions: any[]) => {
-  const messages: { role: "system" | "user" | "assistant"; content: string }[] = [
-    {
-      role: "system",
-      content: "You are a financial assistant that helps analyze user transactions.",
-    },
-    {
-      role: "user",
-      content: `Here are my recent transactions: ${JSON.stringify(
-        transactions
-      )}. ${query}`,
-    },
-  ];
-
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages,
-      temperature: 0.7,
-    });
-
-    return response.choices[0]?.message?.content || "No response";
-  } catch (error: any) {
-    console.error("Error with OpenAI API:", error.response?.data || error.message);
-    throw new Error("Error processing the request with OpenAI.");
-  }
+export const config = {
+  runtime: "edge",
 };
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-  dangerouslyAllowBrowser: false,
-});
-
-export default openai;
