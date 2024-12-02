@@ -1,6 +1,14 @@
+"use client"
 import React from 'react';
 
 const Page = () => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = 'icons/sampletax.png'; // Replace with the actual path to your file
+    link.download = 'taxsample.png';
+    link.click();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex flex-col items-center">
       {/* Page Title */}
@@ -12,7 +20,7 @@ const Page = () => {
       <p className="text-gray-700 text-center max-w-lg mb-8">
         Simplify your tax declaration process with our smart e-tax service. 
         Connect your financial accounts, list your assets (including luxury items like watches and cars), 
-        and get a comprehensive tax report with just a few clicks. This sercice is enabled by our one stop for all solution that bundles all APIs for any asset class.
+        and get a comprehensive tax report with just a few clicks. This service is enabled by our one-stop solution that bundles all APIs for any asset class.
       </p>
       
       {/* Form Mockup */}
@@ -84,10 +92,19 @@ const Page = () => {
             </button>
           </div>
 
+          {/* Download Button */}
+          <button
+            type="button"
+            onClick={handleDownload}
+            className="mt-8 w-full bg-gray-700 text-white py-3 px-6 rounded-lg hover:bg-gray-800"
+          >
+            Download Tax Sample
+          </button>
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="mt-8 w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700"
+            className="mt-4 w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700"
           >
             Generate Tax Report
           </button>
