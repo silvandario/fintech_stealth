@@ -14,7 +14,7 @@ export default function AuthLayout({
     
 
 
-    <main className="flex min-h-screen w-full justify-between font-inter" id="child">
+    <main className="flex min-h-screen w-full justify-between font-inter px-4 sm:px-8" id="child">
       {children}
       <div className="auth-asset">
         <div>
