@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import ValueProposition from "@/components/ValueProposition";
 import Image from "next/image";
 
 export default function AuthLayout({
@@ -29,11 +30,11 @@ export default function AuthLayout({
       </div>
     </main>
     
-     { /* 
+
      <div className="flex min-h-screen w-full justify-between font-inter">
      <ValueProposition /> 
      </div>
-     */}
+
      
     
     </>
