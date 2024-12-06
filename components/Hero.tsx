@@ -12,7 +12,7 @@ const Hero = () => {
       <Button className="z-10 mt-4">
         <Link href="#child">
         <p className="z-10 whitespace-pre-wrap text-center font-bold tracking-tighter text-blue-400">
-        Enlighten your finances. 
+        Click to enlighten your finances.
         
       </p>
       
